@@ -1,0 +1,31 @@
+# 🤖 Real Estate AI Agents – Tool Calling & Text-to-SQL
+
+AI agents for a real estate company that give exact, data-based answers: they calculate rental yields, search property listings, and answer business questions by writing SQL – with safety guardrails.
+
+## Notebooks
+- [Tool_calling_agent.ipynb](Tool_calling_agent.ipynb) – tool calling and a multi-step agent
+- [Text_to_sql.ipynb](Text_to_sql.ipynb) – text-to-SQL data agent
+
+## 1. Tool calling agent
+- **Yield calculator tool** – exact gross and net rental yield
+- **Property search tool** – filters listings by area, price and bedrooms from a plain-English question
+- **Agent** – completes multi-step tasks on its own, e.g. "Find 2-bed flats in JVC under 1M and tell me which has the best yield"
+
+## 2. Text-to-SQL data agent
+- Turns plain-English questions into **SQL**, runs them, and explains the result
+- Handles **JOIN** questions across two tables (properties and sales)
+- **Tested 6 / 6**, including a delete attempt (refused) and a question the data can't answer (said so)
+
+## Safety guardrails
+- **Read-only** database connection; only single `SELECT` queries allowed
+- **Input validation** inside tools
+- **Human approval** for risky actions
+- **Step limit** on tool calls
+- Safety enforced in code, not only in the prompt
+
+## Tech stack
+Python · Google Gemini API (function calling) · SQLite · pandas · Google Colab
+
+## Related projects
+- [Lease Reader](https://github.com/fatemarampurawalaa-sudo/Lease_reader) – live RAG app for lease contracts
+- [LLM Practice](https://github.com/fatemarampurawalaa-sudo/LLM-practice) – Gemini API, prompts, structured output, embeddings, RAG
